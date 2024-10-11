@@ -22,10 +22,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     
-    # Navigate to the frontend directory
-    - name: Change directory to frontend
-      run: cd frontend
-    
+    # Use Node.js
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
       with:
@@ -43,7 +40,7 @@ jobs:
     # Run tests
     - run: npm test
       working-directory: frontend
-
+    
     - name: Deploy with gh-pages
       run: |
         git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
